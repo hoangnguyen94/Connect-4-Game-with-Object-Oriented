@@ -71,10 +71,9 @@ class Game
   {
     const piece = document.createElement( 'div' );
     piece.classList.add( 'piece' );
-    piece.classList.add( `p${this.currPlayer}` );  
-  
+    piece.classList.add( `${this.currPlayer.color}` );
+    piece.style.backgroundColor = this.currPlayer.color;
     piece.style.top = -50 * ( y + 2 );
-    
     const spot = document.getElementById( `${y}-${x}` );
     spot.append( piece );
   }
@@ -162,15 +161,17 @@ class Game
 }
 class Player
 {
-  constructor ( color )
+  constructor ( player, color )
   {
     this.color = color;
+    this.player = player;
   }
+
 }
 
 document.getElementById( 'start-game' ).addEventListener( "click", () =>
 {
-  let player1 = new Player( document.getElementById( "p1-color" ).value )
-  let player2 = new Player( document.getElementById( "p2-color" ).value )
+  let player1 = new Player( document.getElementById( "p1-color" ).value, "red" )
+  let player2 = new Player( document.getElementById( "p2-color" ).value, "blue" )
   new Game( player1, player2 );
 })
