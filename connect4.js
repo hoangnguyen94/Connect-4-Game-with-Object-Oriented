@@ -166,12 +166,12 @@ class Player
     this.color = color;
     this.player = player;
   }
-
+  
 }
 
 document.getElementById( 'start-game' ).addEventListener( "click", () =>
 {
-  let player1 = new Player( document.getElementById( "p1-color" ).value, "red" )
-  let player2 = new Player( document.getElementById( "p2-color" ).value, "blue" )
+  let player1 = new Player( document.getElementById( "p1" ).value, document.getElementById("p1-color").value )
+  let player2 = new Player( document.getElementById( "p2" ).value, document.getElementById("p2-color").value )
   new Game( player1, player2 );
 })
